@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+li {
+  list-style-type: none;
+}
+.do-this-list {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+.do-this {
+  float: left;
+}
+.do-this-list button {
+  float: left;
+}
