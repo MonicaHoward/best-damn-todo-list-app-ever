@@ -1,17 +1,62 @@
 .App {
   text-align: center;
 }
-li {
-  list-style-type: none;
+body {
+  background-color: #41BBD9;
 }
-.do-this-list {
-  display: inline-block;
+.title {
+  color: #006E90;
+  font-size: 3em;
+  margin: 50px;
+}
+
+.input {
+  border: none;
+  border-radius: 6px;
+  height: 20px;
+  width: 50%;
+  padding: 20px;
+}
+ul {
   margin: 0 auto;
+  padding: 20px;
   text-align: center;
+  width: 55%;
+}
+li {
+  background: #fff;
+  border-radius: 6px;
+  list-style-type: none;
+  margin: 10px;
+  padding: 20px;
+
+}
+/*.do-this-list {
+  background-color: white;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 3px auto;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
 }
 .do-this {
   float: left;
-}
+}*/
 .do-this-list button {
   float: left;
+}
+.button-box {
+  float: right;
+  margin: 0 10px;
+}
+.delete {
+  margin: 5px;
+  border: 3px solid #99C24D;
+  background-color: white;
+}
+.done {
+  margin: 5px;
+  border: 3px solid #F18F01;
+  background-color: white;
 }
