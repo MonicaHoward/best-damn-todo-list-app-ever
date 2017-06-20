@@ -7,9 +7,7 @@ class Input extends React.Component {
       userInput: ''
     }
   }
-  handleKeyUp() {
 
-  }
   render() {
     return (
       <div>
@@ -22,29 +20,14 @@ class Input extends React.Component {
 }
 class ListItem extends React.Component {
 
-
-  handleDelete() {
-
-  }
-
   render() {
     return (
       <li className="list-item"
-          onClick={this.props.clickHandler}>
+          onClick={this.props.handleDelete}>
         {this.props.taskName}
+
       </li>
-      // <div className="do-this-container">
-      //   <ul className="do-this-list">
-      //     <li className="do-this"> LIST ITEM GOES HERE </li>
-      //     <div className="button-box">
-      //       <button className="delete"
-      //               onClick={() => this.handleDelete()}>
-      //         done
-      //       </button>
-      //       <button className="done">delete</button>
-      //     </div>
-      //   </ul>
-      // </div>
+
     )
   }
 }
@@ -70,15 +53,29 @@ class ToDo extends React.Component {
       ]
     }
   }
+
+  onKeyUp(evt) {
+    if (evt.which !== 13)
+    return;
+    console.log("firing");
+    const tasks = this.state.tasks.slice(0);
+    tasks.push({taskName: evt.target.value});
+    this.setState({tasks: tasks});
+  }
+
+  handleClick(index) {
+    const tasks = this.state.tasks.slice(0);
+    tasks.splice(index, 1);
+    this.setState({tasks: tasks});
+  }
+
   render() {
     return(
       <div>
-        <Input />
+        <Input onKeyUp={this.onKeyUp.bind((this))}/>
         <WholeList>
-          {this.state.tasks.map((task) => {taskName: "Task 1"})}
-          <ListItem taskName={"Task 1"} />
-          <ListItem taskName={"Task 2"} />
-          <ListItem taskName={"Task 3"} />
+          {this.state.tasks.map((task, i) => <ListItem onClick={this.handleClick.bind(this, i)} taskName={task.taskName} key={i} />)}
+
         </WholeList>
       </div>
     )
@@ -86,3 +83,17 @@ class ToDo extends React.Component {
 }
 
 export default ToDo;
+
+
+// <div className="do-this-container">
+//   <ul className="do-this-list">
+//     <li className="do-this"> LIST ITEM GOES HERE </li>
+//     <div className="button-box">
+//       <button className="delete"
+//               onClick={() => this.handleDelete()}>
+//         done
+//       </button>
+//       <button className="done">delete</button>
+//     </div>
+//   </ul>
+// </div>
