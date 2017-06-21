@@ -1,12 +1,6 @@
 import React from 'react';
 
 class Input extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      userInput: ''
-    }
-  }
 
   render() {
     return (
@@ -54,7 +48,7 @@ class ToDo extends React.Component {
     }
   }
 
-  onKeyUp(evt) {
+  handleKeyup(evt) {
     if (evt.which !== 13)
     return;
     console.log("firing");
@@ -72,7 +66,7 @@ class ToDo extends React.Component {
   render() {
     return(
       <div>
-        <Input onKeyUp={this.onKeyUp.bind((this))}/>
+        <Input onkeyup={this.handleKeyup.bind((this))}/>
         <WholeList>
           {this.state.tasks.map((task, i) => <ListItem onClick={this.handleClick.bind(this, i)} taskName={task.taskName} key={i} />)}
 
