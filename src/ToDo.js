@@ -48,10 +48,12 @@ class ToDo extends React.Component {
     }
   }
 
-  handleKeyup(evt) {
-    if (evt.which !== 13)
-    return;
-    console.log("firing");
+  handleKeyUp(evt) {
+    if (evt.keyCode !== 13) {
+      return;
+
+    }
+    console.log('what do we have');
     const tasks = this.state.tasks.slice(0);
     tasks.push({taskName: evt.target.value});
     this.setState({tasks: tasks});
@@ -66,7 +68,7 @@ class ToDo extends React.Component {
   render() {
     return(
       <div>
-        <Input onkeyup={this.handleKeyup.bind((this))}/>
+        <Input onKeyUp={this.handleKeyUp.bind((this))}/>
         <WholeList>
           {this.state.tasks.map((task, i) => <ListItem onClick={this.handleClick.bind(this, i)} taskName={task.taskName} key={i} />)}
 
