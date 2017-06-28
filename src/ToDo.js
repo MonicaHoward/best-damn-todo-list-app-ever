@@ -7,22 +7,24 @@ class Input extends React.Component {
       <div>
         <input className="input"
                placeholder="what do you need to do?"
-               onKeyUp={this.props.handleKeyUp} />
+               onKeyUp={this.props.onKeyUpHandler}
+              />
       </div>
     )
   }
 }
+
 class ListItem extends React.Component {
 
   render() {
     return (
       <li className="list-item"
-          onClick={this.props.handleDelete}>
+          >
         {this.props.taskName}
-
+        <button onClick={this.props.onClickHandler}>DONE</button>
       </li>
 
-    )
+    );
   }
 }
 
@@ -36,14 +38,14 @@ class WholeList extends React.Component {
   }
 }
 
+
+
 class ToDo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       tasks: [
-        {taskName: "Task 1"},
-        {taskName: "Task 2"},
-        {taskName: "Task 3"}
+
       ]
     }
   }
@@ -51,7 +53,6 @@ class ToDo extends React.Component {
   handleKeyUp(evt) {
     if (evt.keyCode !== 13) {
       return;
-
     }
     console.log('what do we have');
     const tasks = this.state.tasks.slice(0);
@@ -59,7 +60,7 @@ class ToDo extends React.Component {
     this.setState({tasks: tasks});
   }
 
-  handleClick(index) {
+  removeItem(index) {
     const tasks = this.state.tasks.slice(0);
     tasks.splice(index, 1);
     this.setState({tasks: tasks});
@@ -68,9 +69,9 @@ class ToDo extends React.Component {
   render() {
     return(
       <div>
-        <Input onKeyUp={this.handleKeyUp.bind((this))}/>
+        <Input onKeyUpHandler={this.handleKeyUp.bind((this))}/>
         <WholeList>
-          {this.state.tasks.map((task, i) => <ListItem onClick={this.handleClick.bind(this, i)} taskName={task.taskName} key={i} />)}
+          {this.state.tasks.map((task, i) =>  <ListItem onClickHandler={this.removeItem.bind(this, i)} taskName={task.taskName} key={i} />)}
 
         </WholeList>
       </div>
