@@ -43,19 +43,10 @@ li {
 .do-this {
   float: left;
 }*/
-.do-this-list button {
-  float: left;
-}
-.button-box {
-  float: right;
-  margin: 0 10px;
-}
-.delete {
-  margin: 5px;
-  border: 3px solid #99C24D;
-  background-color: white;
-}
+
+
 .done {
+  float: right;
   margin: 5px;
   border: 3px solid #F18F01;
   background-color: white;

@@ -18,10 +18,10 @@ class ListItem extends React.Component {
 
   render() {
     return (
-      <li className="list-item"
-          >
+      <li className="list-item">
         {this.props.taskName}
-        <button onClick={this.props.onClickHandler}>DONE</button>
+        <button
+          className="done" onClick={this.props.onClickHandler}>DONE</button>
       </li>
 
     );
@@ -54,7 +54,6 @@ class ToDo extends React.Component {
     if (evt.keyCode !== 13) {
       return;
     }
-    console.log('what do we have');
     const tasks = this.state.tasks.slice(0);
     tasks.push({taskName: evt.target.value});
     this.setState({tasks: tasks});
@@ -80,17 +79,3 @@ class ToDo extends React.Component {
 }
 
 export default ToDo;
-
-
-// <div className="do-this-container">
-//   <ul className="do-this-list">
-//     <li className="do-this"> LIST ITEM GOES HERE </li>
-//     <div className="button-box">
-//       <button className="delete"
-//               onClick={() => this.handleDelete()}>
-//         done
-//       </button>
-//       <button className="done">delete</button>
-//     </div>
-//   </ul>
-// </div>
